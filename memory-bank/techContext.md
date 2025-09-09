@@ -13,28 +13,27 @@
 **Alternative Options**: Vue.js, vanilla HTML/CSS/JS for simplicity
 
 ### Backend
-**Primary Choice**: Node.js with Express
-- **Node.js 18+**: JavaScript runtime for backend development
-- **Express.js**: Minimal, flexible web application framework
-- **TypeScript**: Consistent language across frontend and backend
-- **Cors**: Cross-origin resource sharing middleware
-- **Morgan**: HTTP request logger middleware
-- **Helmet**: Security middleware
+**Primary Choice**: Python with FastAPI
+- **Python 3.9+**: Modern Python runtime for backend development
+- **FastAPI**: High-performance, easy-to-use web framework with automatic API documentation
+- **Pydantic**: Data validation and serialization with type hints
+- **Uvicorn**: Lightning-fast ASGI server
+- **SQLAlchemy**: SQL toolkit and Object-Relational Mapping
 
-**Alternative Options**: Python with Flask, Java with Spring Boot
+**Alternative Options**: Node.js with Express, Java with Spring Boot
 
 ### AI Integration
 **Primary Choice**: OpenAI API (GPT-4/GPT-3.5-turbo)
-- **OpenAI SDK**: Official JavaScript/TypeScript client
-- **Anthropic Claude**: Alternative LLM provider
+- **OpenAI Python SDK**: Official Python client
+- **Anthropic Claude**: Alternative LLM provider with Python SDK
 - **Google Gemini**: Additional option for comparison
 
 ### Data Processing
 **Technology Stack**:
-- **PDF Parser**: pdf-parse or pdf2json for PDF document processing
-- **Document Processing**: mammoth for Word document handling
-- **Data Validation**: Joi or Zod for schema validation
-- **JSON Storage**: Native JSON file handling with fs-extra
+- **PDF Parser**: PyPDF2 or pdfplumber for PDF document processing
+- **Document Processing**: python-docx for Word document handling
+- **Data Validation**: Pydantic for schema validation and type safety
+- **JSON Storage**: Native JSON handling with Python standard library
 
 ### Development Tools
 **Required AI Tools** (as per assignment):
@@ -47,17 +46,20 @@
 
 ### Local Setup Requirements
 ```bash
-# Node.js and npm
-node --version  # v18.0.0 or higher
-npm --version   # v8.0.0 or higher
+# Python and pip
+python --version  # v3.9.0 or higher
+pip --version     # v21.0.0 or higher
+
+# UV package manager (preferred)
+uv --version
 
 # Git for version control
 git --version
 
 # Environment variables
-API_KEY=your_openai_api_key
-PORT=3000
-NODE_ENV=development
+OPENAI_API_KEY=your_openai_api_key
+PORT=8000
+ENVIRONMENT=development
 ```
 
 ### Project Structure
@@ -71,14 +73,15 @@ AImpact_HA/
 │   │   └── utils/           # Helper functions
 │   ├── public/              # Static assets
 │   └── package.json
-├── backend/                 # Express.js API
-│   ├── src/
-│   │   ├── routes/          # API endpoints
+├── backend/                 # FastAPI Application
+│   ├── app/
+│   │   ├── routers/         # API endpoints
 │   │   ├── services/        # Business logic
-│   │   ├── models/          # Data models
+│   │   ├── models/          # Pydantic data models
 │   │   ├── utils/           # Utilities
-│   │   └── middleware/      # Express middleware
-│   └── package.json
+│   │   └── dependencies/    # FastAPI dependencies
+│   ├── models/              # Database models
+│   └── requirements.txt
 ├── data/                    # Processed regulatory data
 │   ├── raw/                 # Original PDF/Word files
 │   ├── processed/           # Structured JSON data
@@ -89,30 +92,38 @@ AImpact_HA/
 
 ### Dependencies
 
-#### Backend Dependencies
-```json
-{
-  "dependencies": {
-    "express": "^4.18.0",
-    "cors": "^2.8.5",
-    "helmet": "^7.0.0",
-    "morgan": "^1.10.0",
-    "openai": "^4.0.0",
-    "pdf-parse": "^1.1.1",
-    "mammoth": "^1.6.0",
-    "joi": "^17.9.0",
-    "fs-extra": "^11.1.0",
-    "dotenv": "^16.3.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/express": "^4.17.0",
-    "typescript": "^5.0.0",
-    "ts-node": "^10.9.0",
-    "nodemon": "^3.0.0",
-    "jest": "^29.0.0"
-  }
-}
+#### Backend Dependencies (requirements.txt)
+```txt
+# FastAPI and server
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Data validation and serialization
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# Database and ORM
+sqlalchemy==2.0.23
+
+# AI SDKs
+openai==1.3.7
+anthropic==0.7.7
+google-generativeai==0.3.1
+
+# Environment management
+python-dotenv==1.0.0
+
+# Document processing
+pypdf2==3.0.1
+python-docx==1.1.0
+
+# Development dependencies
+pytest==7.4.3
+pytest-asyncio==0.21.1
+black==23.11.0
+mypy==1.7.1
+```
 ```
 
 #### Frontend Dependencies
