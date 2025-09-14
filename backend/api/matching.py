@@ -17,6 +17,7 @@ from models.business_profile import BusinessProfile, QuestionnaireResponse, SAMP
 from matching.engine import RequirementMatcher, create_matcher
 from matching.rules import RuleProcessor
 from matching.formatter import RequirementFormatter, MatchedRequirements, create_formatter
+from services.ai_service import AIService, ReportGenerationRequest, AIReportResponse, get_ai_service
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -298,6 +299,164 @@ def create_app() -> FastAPI:
             "ai_prompt_context": prompt_context,
             "total_requirements": len(processed_matches)
         }
+    
+    @app.post("/api/generate-report", response_model=AIReportResponse)
+    async def generate_report(
+        questionnaire: QuestionnaireResponse,
+        matcher_instance: RequirementMatcher = Depends(get_matcher)
+    ):
+        """
+        Generate AI-powered compliance report from questionnaire.
+        
+        This is the main AI integration endpoint that takes a questionnaire,
+        matches requirements, and generates a personalized Hebrew report.
+        """
+        try:
+            ai_service = get_ai_service()
+            
+            # Convert questionnaire to business profile
+            business_profile = questionnaire.to_business_profile()
+            
+            logger.info(f"Generating AI report for: {business_profile.size_sqm}m², "
+                       f"{business_profile.capacity_people} people")
+            
+            # Match requirements
+            raw_matches = matcher_instance.match_requirements(business_profile)
+            processed_matches = rule_processor.process_matches(raw_matches, business_profile)
+            conflicts = rule_processor.get_conflict_report()
+            
+            # Format for AI
+            formatted_result = formatter.format_for_ai(
+                processed_matches, 
+                business_profile, 
+                conflicts
+            )
+            
+            # Create AI request
+            ai_request = ReportGenerationRequest(
+                business_name=questionnaire.business_name,
+                business_type="מסעדה",
+                hebrew_context=formatted_result.hebrew_context_full,
+                requirements_summary=formatted_result.hebrew_context_summary,
+                priority_requirements=formatted_result.priority_requirements,
+                business_characteristics={
+                    "size_sqm": business_profile.size_sqm,
+                    "capacity_people": business_profile.capacity_people,
+                    "special_characteristics": list(business_profile.special_characteristics)
+                }
+            )
+            
+            # Generate report using AI
+            report_response = await ai_service.generate_report(ai_request)
+            
+            # Reset processor
+            rule_processor.reset_conflicts()
+            
+            logger.info(f"Successfully generated AI report. "
+                       f"Tokens: {report_response.tokens_used}, "
+                       f"Time: {report_response.processing_time:.2f}s")
+            
+            return report_response
+            
+        except ValueError as e:
+            logger.error(f"AI service configuration error: {e}")
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail="AI service not configured. Please set OPENAI_API_KEY environment variable."
+            )
+        except Exception as e:
+            logger.error(f"Error generating AI report: {e}")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f"Failed to generate AI report: {str(e)}"
+            )
+    
+    @app.post("/api/generate-report/sample/{profile_name}", response_model=AIReportResponse)
+    async def generate_report_sample(
+        profile_name: str,
+        matcher_instance: RequirementMatcher = Depends(get_matcher)
+    ):
+        """Generate AI report for a sample profile - useful for testing."""
+        if profile_name not in SAMPLE_PROFILES:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Sample profile '{profile_name}' not found"
+            )
+        
+        try:
+            ai_service = get_ai_service()
+            business_profile = SAMPLE_PROFILES[profile_name]
+            
+            # Process requirements
+            raw_matches = matcher_instance.match_requirements(business_profile)
+            processed_matches = rule_processor.process_matches(raw_matches, business_profile)
+            conflicts = rule_processor.get_conflict_report()
+            
+            # Format for AI
+            formatted_result = formatter.format_for_ai(
+                processed_matches,
+                business_profile,
+                conflicts
+            )
+            
+            # Create AI request
+            ai_request = ReportGenerationRequest(
+                business_name=f"דוגמה - {profile_name}",
+                business_type="מסעדה",
+                hebrew_context=formatted_result.hebrew_context_full,
+                requirements_summary=formatted_result.hebrew_context_summary,
+                priority_requirements=formatted_result.priority_requirements,
+                business_characteristics={
+                    "size_sqm": business_profile.size_sqm,
+                    "capacity_people": business_profile.capacity_people,
+                    "special_characteristics": list(business_profile.special_characteristics)
+                }
+            )
+            
+            # Generate report
+            report_response = await ai_service.generate_report(ai_request)
+            
+            rule_processor.reset_conflicts()
+            
+            return report_response
+            
+        except ValueError as e:
+            logger.error(f"AI service configuration error: {e}")
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail="AI service not configured. Please set OPENAI_API_KEY environment variable."
+            )
+        except Exception as e:
+            logger.error(f"Error generating sample AI report: {e}")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f"Failed to generate AI report: {str(e)}"
+            )
+    
+    @app.get("/api/ai/test-connection")
+    async def test_ai_connection():
+        """Test AI service connection and configuration."""
+        try:
+            ai_service = get_ai_service()
+            connection_ok = await ai_service.test_connection()
+            
+            return {
+                "ai_service_available": connection_ok,
+                "model": ai_service.model,
+                "status": "connected" if connection_ok else "failed"
+            }
+        except ValueError as e:
+            return {
+                "ai_service_available": False,
+                "error": str(e),
+                "status": "configuration_error"
+            }
+        except Exception as e:
+            return {
+                "ai_service_available": False,
+                "error": str(e),
+                "status": "connection_error"
+            }
     
     return app
 
