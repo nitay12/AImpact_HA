@@ -6,12 +6,14 @@ REST API for business questionnaire and requirement matching services.
 """
 
 import logging
+import os
 from typing import List, Dict, Any, Optional
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Depends, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ValidationError
+from dotenv import load_dotenv
 
 from models.business_profile import BusinessProfile, QuestionnaireResponse, SAMPLE_PROFILES
 from matching.engine import RequirementMatcher, create_matcher
@@ -82,7 +84,16 @@ def create_app() -> FastAPI:
     async def startup_event():
         """Initialize services on startup."""
         global matcher
-        
+
+        # Load environment variables from .env file
+        backend_dir = Path(__file__).parent.parent
+        env_file = backend_dir / ".env"
+        if env_file.exists():
+            load_dotenv(env_file)
+            logger.info(f"Loaded environment variables from {env_file}")
+        else:
+            logger.warning(f"No .env file found at {env_file}")
+
         logger.info("Initializing AImpact HA services...")
         
         # Try to load regulatory data
