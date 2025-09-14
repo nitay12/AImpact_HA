@@ -39,23 +39,23 @@ class AIReportResponse(BaseModel):
 class AIService:
     """Service for AI-powered report generation using OpenAI."""
     
-    def __init__(self, api_key: Optional[str] = None, model: str = "gpt-3.5-turbo"):
+    def __init__(self, api_key: Optional[str] = None, model: str = "gpt-4o-mini"):
         """
         Initialize AI service.
-        
+
         Args:
             api_key: OpenAI API key (defaults to OPENAI_API_KEY env var)
             model: OpenAI model to use for generation
         """
         self.api_key = api_key or os.getenv("OPENAI_API_KEY")
         self.model = model
-        
+
         if not self.api_key:
             raise ValueError(
                 "OpenAI API key not provided. Set OPENAI_API_KEY environment variable "
                 "or pass api_key parameter."
             )
-        
+
         self.client = AsyncOpenAI(api_key=self.api_key)
         logger.info(f"AI Service initialized with model: {model}")
     
