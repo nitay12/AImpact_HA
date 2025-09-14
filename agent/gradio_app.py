@@ -325,31 +325,6 @@ def create_gradio_interface():
                     rtl=True
                 )
 
-                # System Statistics
-                gr.Markdown("### סטטיסטיקות מערכת", rtl=True)
-
-                stats_btn = gr.Button("הצג סטטיסטיקות")
-
-                stats_output = gr.Markdown(
-                    label="נתוני מערכת",
-                    value="לחץ להצגת סטטיסטיקות",
-                    rtl=True
-                )
-
-                # Data Upload Section
-                gr.Markdown("### העלאת נתונים חדשים", rtl=True)
-
-                file_upload = gr.File(
-                    label="בחר קובץ JSON עם רגולציות",
-                    file_types=[".json"]
-                )
-
-                upload_btn = gr.Button("העלה נתונים")
-
-                upload_status = gr.Textbox(
-                    label="סטטוס העלאה",
-                    interactive=False
-                )
 
         # Event handlers
         def respond(message, history):
@@ -390,20 +365,6 @@ def create_gradio_interface():
             chat_app.generate_compliance_report,
             [],
             report_output
-        )
-
-        # Statistics
-        stats_btn.click(
-            chat_app.get_system_stats,
-            [],
-            stats_output
-        )
-
-        # File upload
-        upload_btn.click(
-            chat_app.upload_new_data,
-            file_upload,
-            upload_status
         )
 
         # Footer
