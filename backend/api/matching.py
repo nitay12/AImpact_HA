@@ -353,7 +353,7 @@ def create_app() -> FastAPI:
                 business_characteristics={
                     "size_sqm": business_profile.size_sqm,
                     "capacity_people": business_profile.capacity_people,
-                    "special_characteristics": list(business_profile.special_characteristics)
+                    "special_characteristics": [str(feature) for feature in business_profile.special_features]
                 }
             )
             
@@ -420,7 +420,7 @@ def create_app() -> FastAPI:
                 business_characteristics={
                     "size_sqm": business_profile.size_sqm,
                     "capacity_people": business_profile.capacity_people,
-                    "special_characteristics": list(business_profile.special_characteristics)
+                    "special_characteristics": [str(feature) for feature in business_profile.special_features]
                 }
             )
             
