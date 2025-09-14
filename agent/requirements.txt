@@ -1,0 +1,34 @@
+# RAG System for Regulatory Data - Requirements
+# For Gradio Spaces deployment
+
+# Core dependencies
+gradio>=4.0.0
+openai>=1.0.0
+sentence-transformers>=2.2.0
+faiss-cpu>=1.7.0
+numpy>=1.21.0
+
+# Data processing
+pandas>=1.5.0
+
+# Text processing and NLP
+torch>=1.12.0
+transformers>=4.21.0
+tokenizers>=0.13.0
+
+# Utilities
+tqdm>=4.64.0
+scikit-learn>=1.1.0
+
+# For multilingual support
+sentencepiece>=0.1.95
+
+# Additional utilities
+requests>=2.28.0
+urllib3>=1.26.0
+
+# For better Hebrew text handling
+unidecode>=1.3.0
+
+# Environment variables
+python-dotenv>=1.0.0

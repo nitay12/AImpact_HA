@@ -1,0 +1,177 @@
+[
+    {
+      "id": "FIRE_REQ_001",
+      "requirement_name": "דרישות לעסקים קטנים במסלול תצהיר",
+      "source_authority": "הרשות הארצית לכבאות והצלה",
+      "category": "בטיחות אש",
+      "conditions": [
+        {
+          "attribute": "seating_capacity",
+          "operator": "less_than_or_equal_to",
+          "value": 50
+        },
+        {
+          "attribute": "size_sqm",
+          "operator": "less_than_or_equal_to",
+          "value": 150
+        }
+      ],
+      "raw_text": "בית אוכל... והמיועד ל-50 איש לכל היותר ששטחו המבונה עד 150 מ\"ר... עונה על תנאי מסלול 'אישור על יסוד תצהיר'. בעסק יוצבו מטפי כיבוי מסוג אבקה יבשה במשקל של 6 ק''ג, בקרבת לוח החשמל.",
+      "doc_source": "פרק 5"
+    },
+    {
+      "id": "FIRE_REQ_002",
+      "requirement_name": "פתח יציאה יחיד",
+      "source_authority": "הרשות הארצית לכבאות והצלה",
+      "category": "בטיחות אש",
+      "conditions": [
+        {
+          "attribute": "seating_capacity",
+          "operator": "less_than_or_equal_to",
+          "value": 50
+        }
+      ],
+      "raw_text": "בעסק המיועד להכיל עד 50 איש, יהיה פתח יציאה אחד ברוחב של 0.9 מ' נטו לפחות.",
+      "doc_source": "פרק 6, סעיף 6.9.1.1"
+    },
+    {
+      "id": "FIRE_REQ_003",
+      "requirement_name": "שני פתחי יציאה",
+      "source_authority": "הרשות הארצית לכבאות והצלה",
+      "category": "בטיחות אש",
+      "conditions": [
+        {
+          "attribute": "seating_capacity",
+          "operator": "greater_than",
+          "value": 50
+        },
+        {
+          "attribute": "seating_capacity",
+          "operator": "less_than_or_equal_to",
+          "value": 500
+        }
+      ],
+      "raw_text": "בעסק המיועד להכיל למעלה מ-50 איש אך לא יותר מ-500 איש יהיו לפחות שני פתחי יציאה ברוחב של 1.1 מ' נטו כל אחד, וכיוון הפתיחה של הדלת יהיה כלפי כיוון המילוט.",
+      "doc_source": "פרק 6, סעיף 6.9.1.2"
+    },
+    {
+      "id": "FIRE_REQ_004",
+      "requirement_name": "שלושה פתחי יציאה",
+      "source_authority": "הרשות הארצית לכבאות והצלה",
+      "category": "בטיחות אש",
+      "conditions": [
+        {
+          "attribute": "seating_capacity",
+          "operator": "greater_than",
+          "value": 500
+        },
+        {
+          "attribute": "seating_capacity",
+          "operator": "less_than_or_equal_to",
+          "value": 1000
+        }
+      ],
+      "raw_text": "בעסק המיועד להכיל למעלה מ-500 איש אך לא יותר מ-1,000 איש יהיו לפחות 3 פתחים ברוחב של 1.1 מ' נטו כל אחד, וכיוון הפתיחה של הדלת יהיה כלפי כיוון המילוט.",
+      "doc_source": "פרק 6, סעיף 6.9.1.3"
+    },
+    {
+      "id": "FIRE_REQ_005",
+      "requirement_name": "התקנת ידית בהלה",
+      "source_authority": "הרשות הארצית לכבאות והצלה",
+      "category": "בטיחות אש",
+      "conditions": [
+        {
+          "attribute": "seating_capacity",
+          "operator": "greater_than",
+          "value": 100
+        }
+      ],
+      "raw_text": "בדלת המשמשת ליציאה מחלק מהעסק או מקומה בעסק המיועדים להכיל למעלה מ-100 איש תותקן ידית בהלה.",
+      "doc_source": "פרק 6, סעיף 6.8"
+    },
+    {
+      "id": "FIRE_REQ_006",
+      "requirement_name": "גלגלון כיבוי אש",
+      "source_authority": "הרשות הארצית לכבאות והצלה",
+      "category": "בטיחות אש",
+      "conditions": [
+        {
+          "attribute": "size_sqm",
+          "operator": "greater_than_or_equal_to",
+          "value": 50
+        },
+        {
+          "attribute": "size_sqm",
+          "operator": "less_than_or_equal_to",
+          "value": 120
+        }
+      ],
+      "raw_text": "בעסק ששטחו עד 120 מ\"ר יותקן גלגלון כיבוי אש עם זרנוק בקוטר \"3/4, באורך שייתן מענה לכיסוי כל שטח העסק עם מזנק צמוד. בעסק עד 50 מ\"ר ועל פי החלטת נותן האישור ניתן לפטור מהתקנת גלגלון ובתנאי שיותקנו מטפי כיבוי.",
+      "doc_source": "פרק 6, סעיפים 6.13.1, 6.13.4"
+    },
+    {
+      "id": "FIRE_REQ_007",
+      "requirement_name": "עמדת כיבוי אש",
+      "source_authority": "הרשות הארצית לכבאות והצלה",
+      "category": "בטיחות אש",
+      "conditions": [
+        {
+          "attribute": "size_sqm",
+          "operator": "greater_than",
+          "value": 120
+        }
+      ],
+      "raw_text": "בעסק ששטחו מעל 120 מ\"ר תותקנה עמדות כיבוי אש, הכוללות כל אחת: ברז כיבוי בקוטר \"2, 2 זרנוקים בקוטר \"2 באורך 15 מ' כל אחד, מזנק בקוטר \"2, גלגלון עם צינור בקוטר \"3/4 עם מזנק צמוד, מטפה אבקה במשקל של 6 ק''ג.",
+      "doc_source": "פרק 6, סעיף 6.13.2"
+    },
+    {
+      "id": "FIRE_REQ_008",
+      "requirement_name": "מערכת גילוי אש ועשן",
+      "source_authority": "הרשות הארצית לכבאות והצלה",
+      "category": "בטיחות אש",
+      "conditions": [
+        {
+          "logic": "OR",
+          "clauses": [
+            {
+              "attribute": "size_sqm",
+              "operator": "greater_than",
+              "value": 50
+            },
+            {
+              "attribute": "seating_capacity",
+              "operator": "greater_than",
+              "value": 50
+            }
+          ]
+        }
+      ],
+      "raw_text": "בעסק תותקן מערכת גילוי אש ועשן... בעסק ששטחו הכולל מעל 50 מ\"ר והמיועד לשמש מעל 50 איש.",
+      "doc_source": "פרק 6, סעיף 6.15.1.1"
+    },
+    {
+      "id": "FIRE_REQ_009",
+      "requirement_name": "מערכת מתזים (ספרינקלרים)",
+      "source_authority": "הרשות הארצית לכבאות והצלה",
+      "category": "בטיחות אש",
+      "conditions": [
+         {
+          "logic": "OR",
+          "clauses": [
+            {
+              "attribute": "size_sqm",
+              "operator": "greater_than",
+              "value": 301
+            },
+            {
+              "attribute": "seating_capacity",
+              "operator": "greater_than",
+              "value": 300
+            }
+          ]
+        }
+      ],
+      "raw_text": "במקומות המפורטים להלן תותקן מערכת כיבוי אש אוטומטית במים... בעסק ששטחו הכולל מעל 301 מ\"ר והמיועד לשמש מעל 300 איש.",
+      "doc_source": "פרק 6, סעיף 6.14.1.1"
+    }
+  ]
