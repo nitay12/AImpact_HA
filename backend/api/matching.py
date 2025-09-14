@@ -363,9 +363,7 @@ def create_app() -> FastAPI:
             # Reset processor
             rule_processor.reset_conflicts()
             
-            logger.info(f"Successfully generated AI report. "
-                       f"Tokens: {report_response.tokens_used}, "
-                       f"Time: {report_response.processing_time:.2f}s")
+            logger.info(f"Successfully generated AI report at {report_response.generation_timestamp}")
             
             return report_response
             

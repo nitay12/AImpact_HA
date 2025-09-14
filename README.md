@@ -207,8 +207,7 @@ pytest==7.4.3            # בדיקות יחידה
 ```json
 {
   "report_content": "דוח מפורט בעברית...",
-  "generation_timestamp": "2024-09-14T...",
-  "processing_time": 3.2
+  "generation_timestamp": "2024-09-14T..."
 }
 ```
 
