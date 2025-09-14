@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-regu-biz / רגו-ביז - Main Application Entry Point
+Regu-Biz / רגו-ביז - Main Application Entry Point
 Business licensing assessment system for Israeli businesses.
 """
 
@@ -19,7 +19,7 @@ from api.matching import app
 
 def main():
     """Run the FastAPI server."""
-    print("Starting regu-biz / רגו-ביז - Business Licensing API Server...")
+    print("Starting Regu-Biz / רגו-ביז - Business Licensing API Server...")
     print("Documentation available at: http://localhost:8000/docs")
     print("Health check at: http://localhost:8000/health")
     

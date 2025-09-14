@@ -75,7 +75,7 @@ function App() {
   return (
     <div className="app" dir="rtl" lang="he">
       <header className="app-header">
-        <h1>regu-biz / רגו-ביז</h1>
+        <h1>Regu-Biz / רגו-ביז</h1>
         <p>מערכת הערכת רישוי עסקים מבוססת בינה מלאכותית</p>
       </header>
 
@@ -109,7 +109,7 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <p>מערכת regu-biz / רגו-ביז - מבוססת על בינה מלאכותית לעיבוד רגולציות בטיחות אש</p>
+        <p>מערכת Regu-Biz / רגו-ביז - מבוססת על בינה מלאכותית לעיבוד רגולציות בטיחות אש</p>
       </footer>
     </div>
   )

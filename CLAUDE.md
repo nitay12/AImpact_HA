@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Context
 
-This is the **regu-biz / רגו-ביז** project - a business licensing assessment system for Israeli businesses. The core requirement is to build an end-to-end system that helps business owners understand regulatory requirements through AI-generated reports.
+This is the **Regu-Biz / רגו-ביז** project - a business licensing assessment system for Israeli businesses. The core requirement is to build an end-to-end system that helps business owners understand regulatory requirements through AI-generated reports.
 
 ### Key Requirements from `משימה.md`
 - Process business licensing data from provided PDF/Word documents

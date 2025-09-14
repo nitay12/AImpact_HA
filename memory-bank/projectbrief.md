@@ -1,7 +1,7 @@
-# Project Brief: regu-biz / רגו-ביז - Business Licensing Assessment System
+# Project Brief: Regu-Biz / רגו-ביז - Business Licensing Assessment System
 
 ## Project Overview
-**regu-biz / רגו-ביז** is an AI-powered business licensing assessment system designed to help business owners in Israel understand and comply with regulatory requirements specific to their business type and characteristics.
+**Regu-Biz / רגו-ביז** is an AI-powered business licensing assessment system designed to help business owners in Israel understand and comply with regulatory requirements specific to their business type and characteristics.
 
 ## Core Requirements
 

@@ -63,8 +63,8 @@ ENVIRONMENT=development
 
 ### Project Structure
 ```
-regu-biz/
-├── frontend/                 # React application (regu-biz UI)
+Regu-Biz/
+├── frontend/                 # React application (Regu-Biz UI)
 │   ├── src/
 │   │   ├── components/      # React components
 │   │   ├── services/        # API communication
@@ -72,7 +72,7 @@ regu-biz/
 │   │   └── utils/           # Helper functions
 │   ├── public/              # Static assets
 │   └── package.json
-├── backend/                 # FastAPI Application (regu-biz API)
+├── backend/                 # FastAPI Application (Regu-Biz API)
 │   ├── app/
 │   │   ├── routers/         # API endpoints
 │   │   ├── services/        # Business logic
