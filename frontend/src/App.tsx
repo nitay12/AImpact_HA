@@ -30,7 +30,7 @@ function App() {
 
     try {
       // Call the FastAPI backend to generate report
-      const response = await fetch('http://127.0.0.1:8000/api/generate-report', {
+      const response = await fetch('/api/generate-report', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
