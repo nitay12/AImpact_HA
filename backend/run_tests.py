@@ -1,5 +1,5 @@
 """
-Test Runner for AImpact HA Backend
+Test Runner for regu-biz / רגו-ביז Backend
 Simple script to run tests and demonstrate matching engine functionality.
 """
 
@@ -152,7 +152,7 @@ def test_business_scenario(business_profile: BusinessProfile,
 
 def main():
     """Run demonstration tests."""
-    print("🚀 AImpact HA - Matching Engine Demonstration")
+    print("🚀 regu-biz / רגו-ביז - Matching Engine Demonstration")
     print("Testing Hebrew fire safety regulation matching...")
     
     # Create sample regulatory data

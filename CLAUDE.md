@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Context
 
-This is the **AImpact_HA** project - a business licensing assessment system for Israeli businesses. The core requirement is to build an end-to-end system that helps business owners understand regulatory requirements through AI-generated reports.
+This is the **regu-biz / רגו-ביז** project - a business licensing assessment system for Israeli businesses. The core requirement is to build an end-to-end system that helps business owners understand regulatory requirements through AI-generated reports.
 
 ### Key Requirements from `משימה.md`
 - Process business licensing data from provided PDF/Word documents
@@ -36,10 +36,11 @@ This project uses Cursor's memory bank system (`.cursor/rules/memory-bank.mdc`) 
 
 ## Current State
 
-**Repository Status**: Initial setup phase
-- No existing code structure, dependencies, or build system
-- Raw project specification and requirements available
-- Ready for initial architecture and technology stack decisions
+**Repository Status**: Complete functional system
+- Full working React TypeScript frontend with Hebrew RTL support
+- Python FastAPI backend with OpenAI GPT-5-mini integration
+- End-to-end AI-powered regulatory report generation
+- Ready for final submission preparation
 
 ## Expected Deliverables
 

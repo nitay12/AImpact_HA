@@ -63,8 +63,8 @@ ENVIRONMENT=development
 
 ### Project Structure
 ```
-AImpact_HA/
-├── frontend/                 # React application
+regu-biz/
+├── frontend/                 # React application (regu-biz UI)
 │   ├── src/
 │   │   ├── components/      # React components
 │   │   ├── services/        # API communication
@@ -72,7 +72,7 @@ AImpact_HA/
 │   │   └── utils/           # Helper functions
 │   ├── public/              # Static assets
 │   └── package.json
-├── backend/                 # FastAPI Application
+├── backend/                 # FastAPI Application (regu-biz API)
 │   ├── app/
 │   │   ├── routers/         # API endpoints
 │   │   ├── services/        # Business logic

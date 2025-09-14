@@ -64,7 +64,7 @@ def create_app() -> FastAPI:
     """Create and configure FastAPI application."""
     
     app = FastAPI(
-        title="AImpact HA - Business Licensing API",
+        title="regu-biz / רגו-ביז - Business Licensing API",
         description="API for matching Israeli fire safety regulations to business characteristics",
         version="1.0.0",
         docs_url="/docs",
@@ -94,7 +94,7 @@ def create_app() -> FastAPI:
         else:
             logger.warning(f"No .env file found at {env_file}")
 
-        logger.info("Initializing AImpact HA services...")
+        logger.info("Initializing regu-biz / רגו-ביז services...")
         
         # Try to load regulatory data
         backend_dir = Path(__file__).parent.parent
@@ -111,7 +111,7 @@ def create_app() -> FastAPI:
     async def root():
         """Root endpoint."""
         return {
-            "service": "AImpact HA - Business Licensing API",
+            "service": "regu-biz / רגו-ביז - Business Licensing API",
             "status": "running",
             "docs": "/docs"
         }
