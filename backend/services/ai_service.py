@@ -39,7 +39,7 @@ class AIReportResponse(BaseModel):
 class AIService:
     """Service for AI-powered report generation using OpenAI."""
     
-    def __init__(self, api_key: Optional[str] = None, model: str = "gpt-4o-mini"):
+    def __init__(self, api_key: Optional[str] = None, model: str = "gpt-5-mini"):
         """
         Initialize AI service.
 
@@ -129,9 +129,9 @@ class AIService:
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}
                 ],
-                max_tokens=2000,
-                temperature=0.7,
-                top_p=0.9,
+                max_completion_tokens=2000,
+                # temperature=0.7,
+                # top_p=0.9,
             )
             
             # Extract response
@@ -182,8 +182,8 @@ class AIService:
             response = await self.client.chat.completions.create(
                 model=self.model,
                 messages=[{"role": "user", "content": prompt}],
-                max_tokens=800,
-                temperature=0.7,
+                max_completion_tokens=1500,
+                # temperature=0.7,
             )
             
             return response.choices[0].message.content

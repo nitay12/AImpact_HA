@@ -1,24 +1,24 @@
 # System Patterns: Architecture and Design Decisions
 
-## Overall Architecture
+## Overall Architecture - IMPLEMENTED SYSTEM
 
-### High-Level System Design
+### High-Level System Design (COMPLETED)
 ```
-[Frontend Interface] 
+[React Frontend (Vite + TypeScript)]
+       ↓ HTTP/CORS
+[FastAPI Backend (Python)]
        ↓
-[Backend API Server]
+[Regulatory Data Processing] ← [OpenAI GPT-5-mini Integration]
        ↓
-[Data Processing Layer] ← [AI/LLM Integration]
-       ↓
-[Structured Data Store]
+[JSON Data Store + Memory]
 ```
 
-### Component Architecture
-- **Frontend**: User interface for questionnaire and report display
-- **Backend API**: RESTful service handling business logic
-- **Data Processor**: Converts regulatory documents to structured data
-- **AI Engine**: LLM integration for intelligent report generation
-- **Data Store**: Structured storage of processed regulatory data
+### Implemented Component Architecture
+- **Frontend**: React TypeScript app with Hebrew RTL support, questionnaire forms, and report display
+- **Backend API**: FastAPI server with automatic documentation, CORS support, and comprehensive error handling
+- **Data Processor**: PyMuPDF-based extractor converting Hebrew regulatory documents to structured JSON
+- **AI Engine**: OpenAI GPT-5-mini integration with specialized Hebrew regulatory prompts
+- **Data Store**: JSON-based structured storage with requirement matching and business rules engine
 
 ## Core Design Patterns
 
@@ -66,12 +66,16 @@ Filtered Requirements
 - AI enhances with natural language generation
 - Human-readable output from technical requirements
 
-### 4. API Design Pattern
-**RESTful Resource-Oriented Design**
-- `POST /api/questionnaire` - Submit business information
-- `GET /api/requirements/{businessId}` - Retrieve filtered requirements
-- `POST /api/reports/generate` - Generate AI-powered report
-- `GET /api/reports/{reportId}` - Retrieve generated report
+### 4. API Design Pattern (IMPLEMENTED)
+**RESTful Resource-Oriented Design with FastAPI**
+- `POST /api/generate-report` - Submit questionnaire and generate AI-powered Hebrew compliance report
+- `POST /api/questionnaire/submit` - Submit questionnaire and get matched requirements
+- `POST /api/match-requirements` - Direct requirement matching with BusinessProfile
+- `GET /api/sample-profiles` - Get sample business profiles for testing
+- `POST /api/sample-profiles/{profile_name}` - Test matching with sample profile
+- `GET /api/health` - Health check endpoint
+- `GET /api/stats` - Get statistics about loaded regulatory data
+- `GET /api/ai/test-connection` - Test AI service connection
 
 ## Data Flow Patterns
 

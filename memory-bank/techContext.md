@@ -1,39 +1,38 @@
 # Technical Context: Technologies and Implementation
 
-## Technology Stack
+## Technology Stack - IMPLEMENTED SYSTEM
 
-### Frontend
-**Primary Choice**: React with TypeScript
-- **React 18+**: Modern component-based UI framework
+### Frontend (COMPLETED)
+**Implemented**: React with TypeScript + Vite
+- **React 18+**: Modern component-based UI framework with Hebrew RTL support
 - **TypeScript**: Type safety and better developer experience
-- **Axios**: HTTP client for API communication
-- **React Router**: Single-page application navigation
-- **CSS Modules/Styled-Components**: Component-scoped styling
+- **Vite**: Fast build tool and development server
+- **Custom CSS**: Hebrew RTL styling with modern design
+- **Fetch API**: Native HTTP client for API communication
 
-**Alternative Options**: Vue.js, vanilla HTML/CSS/JS for simplicity
-
-### Backend
-**Primary Choice**: Python with FastAPI
-- **Python 3.9+**: Modern Python runtime for backend development
-- **FastAPI**: High-performance, easy-to-use web framework with automatic API documentation
+### Backend (COMPLETED)
+**Implemented**: Python with FastAPI
+- **Python 3.9+**: Modern Python runtime with async support
+- **FastAPI**: High-performance web framework with automatic API documentation
 - **Pydantic**: Data validation and serialization with type hints
 - **Uvicorn**: Lightning-fast ASGI server
-- **SQLAlchemy**: SQL toolkit and Object-Relational Mapping
+- **python-dotenv**: Environment variable management
+- **CORS Middleware**: Frontend-backend communication support
 
-**Alternative Options**: Node.js with Express, Java with Spring Boot
+### AI Integration (COMPLETED)
+**Implemented**: OpenAI GPT-5-mini
+- **OpenAI Python SDK**: Official async Python client (>=1.50.0)
+- **Custom Hebrew Prompts**: Specialized system prompts for regulatory guidance
+- **Error Handling**: Comprehensive error handling and fallback strategies
+- **Environment Configuration**: Secure API key management via .env
 
-### AI Integration
-**Primary Choice**: OpenAI API (GPT-4/GPT-3.5-turbo)
-- **OpenAI Python SDK**: Official Python client
-- **Anthropic Claude**: Alternative LLM provider with Python SDK
-- **Google Gemini**: Additional option for comparison
-
-### Data Processing
-**Technology Stack**:
-- **PDF Parser**: PyPDF2 or pdfplumber for PDF document processing
+### Data Processing (COMPLETED)
+**Implemented Technology Stack**:
+- **PDF Parser**: PyMuPDF for robust Hebrew PDF document processing
 - **Document Processing**: python-docx for Word document handling
-- **Data Validation**: Pydantic for schema validation and type safety
-- **JSON Storage**: Native JSON handling with Python standard library
+- **Data Validation**: Pydantic models for schema validation and type safety
+- **JSON Storage**: Structured storage with Hebrew text preservation
+- **Regex Processing**: Hebrew-aware pattern matching for thresholds and standards
 
 ### Development Tools
 **Required AI Tools** (as per assignment):
