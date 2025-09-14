@@ -37,9 +37,12 @@ function App() {
         },
         body: JSON.stringify({
           business_name: businessData.business_name,
-          size_sqm: businessData.size_sqm,
-          capacity_people: businessData.capacity_people,
-          special_characteristics: businessData.special_characteristics,
+          business_size_sqm: businessData.size_sqm,
+          seating_capacity: businessData.capacity_people,
+          uses_gas: businessData.special_characteristics.includes('gas_cooking'),
+          serves_meat: businessData.special_characteristics.includes('meat_serving'),
+          offers_delivery: businessData.special_characteristics.includes('delivery_service'),
+          serves_alcohol: businessData.special_characteristics.includes('alcohol_service'),
         }),
       })
 
