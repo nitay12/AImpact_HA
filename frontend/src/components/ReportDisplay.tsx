@@ -1,9 +1,6 @@
 interface AIReport {
   report_content: string
   generation_timestamp: string
-  model_used: string
-  tokens_used?: number
-  processing_time?: number
 }
 
 interface ReportDisplayProps {
@@ -71,19 +68,6 @@ const ReportDisplay: React.FC<ReportDisplayProps> = ({ report, onBack }) => {
             <span className="generation-time">
               נוצר בתאריך: {formatDate(report.generation_timestamp)}
             </span>
-            <span className="model-info">
-              מודל AI: {report.model_used}
-            </span>
-            {report.tokens_used && (
-              <span className="tokens-info">
-                טוקנים: {report.tokens_used.toLocaleString()}
-              </span>
-            )}
-            {report.processing_time && (
-              <span className="processing-time">
-                זמן עיבוד: {report.processing_time.toFixed(2)} שניות
-              </span>
-            )}
           </div>
         </div>
         <div className="report-actions">
@@ -104,8 +88,8 @@ const ReportDisplay: React.FC<ReportDisplayProps> = ({ report, onBack }) => {
           <button onClick={handlePrint} className="btn-secondary">
             🖨️ הדפס דוח
           </button>
-          <button onClick={onBack} className="btn-primary">
-            צור דוח חדש
+          <button onClick={onBack} className="btn-secondary">
+            חזרה לשאלון
           </button>
         </div>
         

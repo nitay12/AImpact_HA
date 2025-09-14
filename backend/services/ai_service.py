@@ -31,9 +31,6 @@ class AIReportResponse(BaseModel):
     """Response model for AI-generated report."""
     report_content: str
     generation_timestamp: str
-    model_used: str
-    tokens_used: Optional[int] = None
-    processing_time: Optional[float] = None
 
 
 class AIService:
@@ -141,13 +138,10 @@ class AIService:
             processing_time = (datetime.now() - start_time).total_seconds()
             
             logger.info(f"Report generated successfully. Tokens: {tokens_used}, Time: {processing_time:.2f}s")
-            
+
             return AIReportResponse(
                 report_content=report_content,
-                generation_timestamp=datetime.now().isoformat(),
-                model_used=self.model,
-                tokens_used=tokens_used,
-                processing_time=processing_time
+                generation_timestamp=datetime.now().isoformat()
             )
             
         except Exception as e:

@@ -14,9 +14,6 @@ interface BusinessProfile {
 interface AIReport {
   report_content: string
   generation_timestamp: string
-  model_used: string
-  tokens_used?: number
-  processing_time?: number
 }
 
 function App() {
